@@ -1,0 +1,44 @@
+body{
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.5;
+  color: #183A16;
+}
+.container{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+#follow{
+  width: 45%;
+  background: transparent;
+  border: 1px solid #c2c2c2;
+  padding: 10px;
+}
+#btnSend{
+  width: 18%;
+  padding: 12px;
+  border-radius: 4px;
+  background: #CBCBF1;
+  border: none;
+  color: #000;
+}
+option{
+  padding: 10px;
+}
+
+.overlay{
+  display: none;
+  position: absolute;
+  background: rgba(236, 230, 230, 0.66);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 45%;
+  height: 50%;
+  margin: auto;
+
+  flex-direction: column;
+}
