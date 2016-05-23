@@ -5,39 +5,43 @@ $(document).ready(function(){
 		var st = {
 			btnSend : '#btnSend',
 			follow	: '#follow',
-      modal   : '.overlay'
+			modal	 : '.overlay',
+			repos  	: '.repos',
+			nameFollowers : ''
 		};
 		catchDom = function(){
 			dom.btnSend = $(st.btnSend);
 			dom.follow	= $(st.follow);
-      dom.modal   = $(st.modal);
+			dom.modal	 = $(st.modal);
+			dom.repos   = $(st.repos);
 		};
 		afterCatchDom = function(){
 			functions.send();
-      functions.btn();
 		};
 		suscribeEvents = function(){
-			dom.btnSend.on("click", events.alert);
-      dom.follow.on("change", events.change);
+			dom.btnSend.on("click", events.showModal);
+			dom.follow.on("change", events.change);
 		};
 		events = {
-			alert: function(){
+			showModal: function(){
 				console.log("Enviaste un regalo =)");
-        $(st.modal).css("display", "flex");
-
+				$(st.modal).css("display", "flex");
+				functions.repos(st.nameFollowers);
 			},
-      change: function(){
-        if ($(this).val() != 0) {
-          $(st.btnSend).removeAttr('disabled');
-          $(st.btnSend).css("background", "#7B7BDA");
-          console.log("Enviaste un regalo a "+$(this).val());
-           return false;
-        }else{
-          console.log("no hay nada");
-           return false;
-          // $(st.btnSend).attr('disabled', 'true');
-        }
-      },
+			change: function(){
+				if ($(this).val() != 0) {
+					st.nameFollowers = $(this).val();
+					//$(st.modal).empty();
+					$(st.modal).css("display", "none")
+					$(st.btnSend).removeAttr('disabled');
+					$(st.btnSend).css("background", "#7B7BDA");
+					// $(st.repos).append(`<span> ` + $(this).val()+ `</span>`  );
+				}else{
+					console.log("no hay nada");
+					$(st.btnSend).attr("disabled", "disabled");
+					$(st.btnSend).css("background", "#CBCBF1");
+				}
+			},
 		};
 		var functions = {
 			send: function(){
@@ -46,16 +50,29 @@ $(document).ready(function(){
 					type: "GET",
 					dataType: "json",
 					success:function(resp){
-						resp.forEach(function(data) {
+						resp.forEach(function(data, nameFollowers) {
+							var width  = 200;
+							var height = 200;
 							$("select").append('<option>' +data.login+ '</option>');
-              $(st.modal).append(`<div>${data.login} <img src="${data.avatar_url}" width="50px" height="50px"/></div>`)
+							console.log(data.avatar_url);
+							$(st.repos).append('<img src=" '+data.avatar_url+' " class="img_repo"/>'); //imagen
 					});
 					}
 				});
 			},
-      btn: function(){
-
-      }
+			repos: function(nameFollowers){
+				$.ajax({
+					url: "https://api.github.com/users/"+nameFollowers+"/repos",
+					type: "GET",
+					dataType: "json",
+					success:function(respuesta){
+						respuesta.forEach(function(data){
+							console.log(data);
+							$(st.modal).append('<a href="">' +data.name+ '</a>')
+						});
+					}
+				});
+			}
 		};
 
 		var initialize = function(){

@@ -5,6 +5,9 @@ body{
   line-height: 1.5;
   color: #183A16;
 }
+section{
+  margin: 7px 0;
+}
 .container{
   width: 80%;
   margin: auto;
@@ -30,15 +33,18 @@ option{
 
 .overlay{
   display: none;
-  position: absolute;
   background: rgba(236, 230, 230, 0.66);
+  padding: 20px 0;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  width: 45%;
-  height: 50%;
+  width: 90%;
   margin: auto;
 
   flex-direction: column;
+}
+.img_repo{
+  width: 200px;
+  height: 200px;
 }
