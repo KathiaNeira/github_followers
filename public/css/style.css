@@ -6,7 +6,7 @@ body{
   color: #183A16;
 }
 section{
-  margin: 7px 0;
+  margin: 60px 0;
 }
 .container{
   width: 80%;
@@ -25,7 +25,7 @@ section{
   border-radius: 4px;
   background: #CBCBF1;
   border: none;
-  color: #000;
+  color: #fff;
 }
 option{
   padding: 10px;
@@ -34,17 +34,40 @@ option{
 .overlay{
   display: none;
   background: rgba(236, 230, 230, 0.66);
-  padding: 20px 0;
+  padding: 20px;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   width: 90%;
   margin: auto;
-
-  flex-direction: column;
+  align-items: center;
+}
+.repos{
+  width: 20%;
+  background: #000;
+  height: 200px;
+  overflow: hidden;
 }
 .img_repo{
   width: 200px;
   height: 200px;
+}
+.reposFollowers{
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: 70%;
+  margin: auto;
+  justify-content: space-between;
+}
+.projects{
+  width: 20%;
+  margin: 10px 0;
+}
+.projects a{
+  text-decoration: none;
+  color: #635e5e;
+  font-size: 17px;
+  text-transform: capitalize;
 }
