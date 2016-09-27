@@ -26,7 +26,6 @@ $(document).ready(function(){
 		};
 		events = {
 			showModal: function(){
-				console.log("Enviaste un regalo =)");
 				$(st.modal).css("display", "flex");
 			},
 			change: function(){
@@ -42,7 +41,6 @@ $(document).ready(function(){
 					$(st.modal).css("display", "none")
 					$(st.reposFollowers).empty();
 					$(st.repos).empty();
-					console.log("no hay nada");
 					$(st.btnSend).attr("disabled", "disabled");
 					$(st.btnSend).css("background", "#CBCBF1");
 				}
@@ -59,13 +57,11 @@ $(document).ready(function(){
 							var width  = 200;
 							var height = 200;
 							$("select").append('<option>' +data.login+ '</option>');
-							console.log(data.avatar_url);
 					});
 					}
 				});
 			},
 			repos: function(nameFollowers){
-				console.log('nameFollowers', nameFollowers)
 				$(st.reposFollowers).empty();
 				$(st.repos).empty();
 				$.ajax({
@@ -73,7 +69,6 @@ $(document).ready(function(){
 					type: "GET",
 					dataType: "json",
 					success:function(respuesta){
-						console.log('respuesta',respuesta)
 						respuesta.forEach(function(data){
 							$(st.reposFollowers).append('<div class="projects"><a href="">' +data.name+ '</a></div>')
 							$(st.repos).append('<img src=" '+data.owner.avatar_url+' " class="img_repo"/>'); //imagen

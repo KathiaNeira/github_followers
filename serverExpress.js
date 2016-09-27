@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 
 //llamando a los archivos estaticos
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname));
 
 // llamamos al index
 app.get('/',function(request, response){
